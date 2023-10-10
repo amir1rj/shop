@@ -76,6 +76,9 @@ class User(AbstractBaseUser):
 
 class Otp(models.Model):
     token =models.CharField(max_length=100,null=True)
+    email  = models.EmailField(null=True,blank=True)
+    password = models.CharField(max_length=20,null=True)
+    username = models.CharField(max_length=28,null=True,blank=True)
     phone_number = models.CharField(max_length=11)
     randcode = models.SmallIntegerField()
     expiresion_date = models.DateTimeField(auto_now_add=True)
@@ -84,3 +87,22 @@ class Otp(models.Model):
     class Meta:
         verbose_name_plural="سرویس اعتبار سنجی"
         verbose_name="اعتبار سنجی"
+
+class Address(models.Model):
+    user =models.ForeignKey(User,on_delete=models.CASCADE,related_name="addresses")
+    address =models.TextField(blank=True)
+    phone= models.CharField(max_length=11)
+    postal_code= models.CharField(max_length=10)
+    full_name= models.CharField(max_length=40)
+    email= models.EmailField(max_length=100,blank=True,null=True)
+    city =models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.address[:50:]
+
+    class Meta:
+        verbose_name="آدرس"
+        verbose_name_plural="آدرس ها"
+
+
+

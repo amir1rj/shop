@@ -1,11 +1,13 @@
 {% extends "base.html"  %}
+{% load render_partial %}
 
 {% load static %}
 {% block title %}
     home
 {% endblock %}
 {% block Category %}
-    {% include 'inclodes/category.html' %}
+
+    {% render_partial "product:category" %}
 {% endblock %}
 {% block slider %}
     <div id="header-carousel" class="carousel slide" data-ride="carousel">

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} add adress{% endblock %}
+{% block content %}
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <div class="row">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div>
+                                <label>Full Name :</label>
+                                {{ form.full_name }}
+                            </div>
+
+                            <div>
+                                <label>Email</label>
+                                {{ form.email }}
+                            </div>
+                            <div>
+                                <label>Phone number</label>
+                               {{ form.phone }}
+                            </div>
+                            <div >
+                                <label>Address : </label>
+                               {{ form.address }}
+                            </div>
+                            <div>
+                                <label>postal code :</label>
+                               {{ form.postal_code }}
+                            </div>
+
+                            <div >
+                                <label>City :</label>
+                                {{ form.city }}
+                            </div>
+                            {{ form.errors }}
+                            <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3"> save address
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
